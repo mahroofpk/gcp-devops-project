@@ -1,0 +1,21 @@
+steps:
+  # Docker Build
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 
+           'us-east4-docker.pkg.dev/$PROJECT_ID/gcpdevops', 
+           '.']
+
+  # Docker Push
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 
+           'us-east4-docker.pkg.dev/$PROJECT_ID/gcpdevops']
+
+  # Deploy container image to gke
+  - name: 'gcr.io/cloud-builders/gke-deploy'
+    args: 
+    - run
+    - --filename=gke.yaml
+    - --image=us-east4-docker.pkg.dev/$PROJECT_ID/gcpdevops
+    - --location=asia-east1-a
+    - --cluster=gcp-project-gke
+    - --namespace=gcp-devops-prod
