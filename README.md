@@ -1,2 +1,2 @@
 # gcp-devops-project
-GCP CICD project with codebuild and gke
+GCP CICD project with codebuild and gke - WIP
