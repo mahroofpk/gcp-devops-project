@@ -16,6 +16,6 @@ steps:
     - run
     - --filename=gke.yaml
     - --image=gcr.io/$PROJECT_ID/gcpdevops
-    - --location=asia-east1-a
+    - --location=us-central1
     - --cluster=gcp-project-gke
     - --namespace=gcp-devops-prod
